@@ -8,6 +8,8 @@ const lightbox = new SimpleLightbox('.gallery a', {
   captionsData : 'alt',
   captionDelay : 250,
  });
+ lightbox.on('show.simplelightbox', function () {
+});
 
 function createGalleryCard(elements) {
     return elements.map(({preview, original, description}) => {
@@ -24,7 +26,7 @@ function handleGalleryImageClick(event) {
   if (!event.target.classList.contains('gallery__image'))
   {return};
 
-  lightbox.on();
+  // lightbox.on();
 };
 
 
