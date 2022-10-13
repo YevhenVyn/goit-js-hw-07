@@ -31,18 +31,19 @@ function handleGalleryImageClickUpgrade(event) {
 
 function runLightbox (currentImageSource) {
   _instance = basicLightbox.create(
-    `<img src="${currentImageSource}" width="800" height="600">`);
+    `<img src="${currentImageSource}" width="800" height="600">`, {
+      onShow: (_instance) => {window.addEventListener('keydown',onEscKeyPress)},
+      onClose: (_instance) => {window.removeEventListener('keydown',onEscKeyPress)},
+    });
 
 _instance.show();
-
-window.addEventListener('keydown',onEscKeyPress);
 }
 
 function onEscKeyPress (event) {
   const escapeKeyCode = 'Escape';
   if (event.code === escapeKeyCode) {
       _instance.close();
-      window.removeEventListener('keydown',onEscKeyPress);
+      // console.log ('Esc is still working!')
   }
   }
 
